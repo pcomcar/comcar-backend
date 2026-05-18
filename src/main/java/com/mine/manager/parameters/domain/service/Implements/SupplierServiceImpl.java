@@ -52,7 +52,7 @@ public class SupplierServiceImpl extends CRUDServiceImpl<Supplier, Integer> impl
     @Override
     public SupplierPojo create(SupplierDto dto) {
         Supplier supplier = convertToEntity(dto);
-        if (dto.getDocumentNumber() != null && supplierRepository.existsByDocumentNumber(dto.getDocumentNumber())) {
+        if (dto.getDocumentNumber() != null && !dto.getDocumentNumber().trim().isEmpty() && supplierRepository.existsByDocumentNumber(dto.getDocumentNumber())) {
             throw new DuplicateException(SUPPLIER, "documento", dto.getDocumentNumber());
         }
         if (supplierRepository.existsByNameAndOptionalSurname(dto.getName(), dto.getSurname())) {
@@ -68,7 +68,7 @@ public class SupplierServiceImpl extends CRUDServiceImpl<Supplier, Integer> impl
     @Override
     public SupplierPojo update(Integer id, SupplierDto dto) {
         Supplier supplierFound = this.getById(id);
-        if (dto.getDocumentNumber() != null && supplierRepository.existsByDocumentNumberAndIdNot(dto.getDocumentNumber(), id)) {
+        if (dto.getDocumentNumber() != null && !dto.getDocumentNumber().trim().isEmpty() && supplierRepository.existsByDocumentNumberAndIdNot(dto.getDocumentNumber(), id)) {
             throw new DuplicateException(SUPPLIER, "documento", dto.getDocumentNumber());
         }
         if (supplierRepository.existsByNameAndOptionalSurnameForUpdate(dto.getName(), dto.getSurname(), id)) {
