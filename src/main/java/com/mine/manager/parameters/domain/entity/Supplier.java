@@ -22,7 +22,7 @@ public class Supplier extends Base {
     @Column(length = 250)
     private String surname;
 
-    @Column(length = 150, unique = true)
+    @Column(length = 150)
     private String documentNumber;
 
     @Column(length = 200)
