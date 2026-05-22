@@ -89,7 +89,7 @@ public class LoadServiceImpl extends CRUDServiceImpl<Load, Integer> implements
             load.setLot(lotService.getLotById(dto.getLotId()));
         }
         load.setMineral(mineralService.getById(dto.getMineralId()));
-        load.setTypeMineral(typeMineralService.getById(dto.getTypeMineralId()));
+        load.setTypeMineral(dto.getTypeMineralId()!=null ? typeMineralService.getById(dto.getTypeMineralId()) : null);
 
         if (dto.getMineId() != null) {
             load.setMine(mineService.getById(dto.getMineId()));

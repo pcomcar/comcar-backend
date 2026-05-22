@@ -43,7 +43,8 @@ public class Load extends Base{
     private Mineral mineral;
 
     @ManyToOne
-    @JoinColumn(name = "type_mineral_id", nullable = false)
+    //@JoinColumn(name = "type_mineral_id", nullable = false)
+    @JoinColumn(name = "type_mineral_id")
     private TypeMineral typeMineral;
 
     @ManyToOne

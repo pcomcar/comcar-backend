@@ -24,7 +24,7 @@ public class LoadDto {
     @Schema(description = "ID del mineral", example = "3")
     private Integer mineralId;
 
-    @NotNull(message = "{load.typeMinerallId.not-null}")
+    //@NotNull(message = "{load.typeMinerallId.not-null}")
     @Schema(description = "ID del tipo de mineral", example = "2")
     private Integer typeMineralId;
 
